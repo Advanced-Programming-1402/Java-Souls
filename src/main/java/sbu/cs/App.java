@@ -25,8 +25,8 @@ public class App {
         }
         else return;
         createCharacter(1,"monster");
-        startBattle(playerList.getFirst(),monsterList.getFirst());
-
+        startBattle(playerList.getFirst(),
+                monsterList.getFirst());
     }
 
     public static void createCharacter(int type,String side) {
@@ -68,6 +68,7 @@ public class App {
             enemy.takeDamage(ally.attack());
             ally.takeDamage(enemy.attack());
         }
+
 
     }
     public static boolean battleEnd(GameObject ally, GameObject enemy){
