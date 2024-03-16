@@ -1,18 +1,18 @@
 package sbu.cs;
 
-import static sbu.cs.App.battleEnd;
 import static sbu.cs.App.jout;
 
 public abstract class Monster implements GameObject
 {
 
     String monsterName;
+    String nickName;
     int type;
     int health = 100;
     int attackPower = 10;
     int agility = 2;
 
-    int takenDamge = 0;
+    int takenDamage = 0;
     boolean isAlive = true;
     public Monster() {
 
@@ -38,24 +38,25 @@ public abstract class Monster implements GameObject
 
     @Override
     public int attack() {
-        jout(monsterName+"attacked with ");
-        int result = attackPower;
-        return result;
+        jout(monsterName+" attacked ");
+        return attackPower;
     }
 
     @Override
     public void takeDamage(int damage) {
-        takenDamge += damage;
-        if (takenDamge>=health){
-            damage -= takenDamge - health;
-            takenDamge = health;
+        takenDamage += damage;
+        if (takenDamage >=health){
+            damage -= takenDamage - health;
+            takenDamage = health;
             isAlive = false;
 
         }
+        jout(monsterName+ "!",1);
+        jout(monsterName+" took ");
         jout(damage);
-        jout(" damage to "+ monsterName);
+        jout(" damage !",1);
         jout(monsterName+ " health is now :");
-        jout(health-takenDamge,1);
+        jout(health-takenDamage,1);
     }
     @Override
     public boolean isDead(){

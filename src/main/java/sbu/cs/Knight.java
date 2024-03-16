@@ -4,23 +4,13 @@ public class Knight extends Player
 {
 
     int type = 2;
+    String nickName = " the Knight ";
 
-
-    public Knight(int level){
+    public Knight(int level,String name){
+        playerName = name;
         setBaseAttrebute(type);
         this.health *= level;
         this.attackPower *= level;
+        this.isAlive = true;
     }
-
-    @Override
-    public int attack() {
-
-        return 0;
-    }
-
-    @Override
-    public void takeDamage(int damage) {
-
-    }
-
 }
