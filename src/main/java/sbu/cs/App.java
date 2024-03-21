@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PropertyPermission;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class App {
 
@@ -11,11 +12,11 @@ public class App {
     private static List<Monster> monsterList = new ArrayList<>();
     private static List<Player> playerList = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         runMenu();
         runGame(playerList.getFirst());
     }
-    public static void runGame(Player user){
+    public static void runGame(Player user) throws InterruptedException {
         while (true){
             for (int i = 0; i < 10; i++) {
                 startBattle(user, monsterList.get(i));
@@ -107,13 +108,15 @@ public class App {
 
     }
 
-    public static void startBattle(GameObject ally, GameObject enemy) {
+    public static void startBattle(GameObject ally, GameObject enemy) throws InterruptedException {
 
         int turnCount = 0;
         while(!battleEnd(ally,enemy)){
             turnCount ++;
             enemy.takeDamage(ally.attack());
+            TimeUnit.MILLISECONDS.sleep(1500);
             ally.takeDamage(enemy.attack());
+            TimeUnit.MILLISECONDS.sleep(1500);
         }
 
 

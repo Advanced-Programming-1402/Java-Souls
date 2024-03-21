@@ -1,5 +1,6 @@
 package sbu.cs;
 
+import static sbu.cs.App.jin;
 import static sbu.cs.App.jout;
 
 public abstract class Monster implements GameObject
@@ -62,6 +63,7 @@ public abstract class Monster implements GameObject
     public boolean isDead(){
         if(!isAlive) {
             jout(monsterName + " died", 1);
+            jin();
         }
         return !isAlive;
 

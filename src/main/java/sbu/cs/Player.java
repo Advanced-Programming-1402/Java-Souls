@@ -1,5 +1,6 @@
 package sbu.cs;
 
+import static sbu.cs.App.jin;
 import static sbu.cs.App.jout;
 
 public abstract class Player implements GameObject
@@ -48,7 +49,6 @@ public abstract class Player implements GameObject
             damage -= takenDamage - health;
             takenDamage = health;
             isAlive = false;
-            jout(playerName+" died",1);
         }
         jout(playerName+ "!",1);
         jout(playerName+" took ");
@@ -61,6 +61,8 @@ public abstract class Player implements GameObject
     public boolean isDead(){
         if(!isAlive) {
             jout(playerName + " died", 1);
+
+            jin();
         }
         return !isAlive;
 
@@ -70,8 +72,8 @@ public abstract class Player implements GameObject
 
     }
     public void levelUp(){
-        health *= 2;
-        attackPower *= 2;
+        health += 100;
+        attackPower *= 1.5;
         jout("your health is : ");
 
         jout(health,1);
